@@ -58,6 +58,8 @@ body {
     transition: all 0.3s ease;
     box-shadow: 0 0 30px rgba(120, 119, 198, 0.5);
     animation: profilePulse 2s ease-in-out infinite;
+    object-fit: cover;
+    object-position: center;
 }
 
 @keyframes profilePulse {
