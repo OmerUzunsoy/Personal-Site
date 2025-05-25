@@ -5,7 +5,7 @@ const texts = [
     "Problem Çözücü",
     "Formula 1 Fanatiği",
     "Müzik Sevdalısı",
-    "Ferrai Hayranı"
+    "Ferrari Hayranı"
 ];
 
 let textIndex = 0;
@@ -45,7 +45,54 @@ function typeEffect() {
     setTimeout(typeEffect, typingSpeed);
 }
 
-// Email Toast Function - Senin Stilinde
+// Theme Toggle Function
+function toggleTheme() {
+    const html = document.documentElement;
+    const themeToggle = document.getElementById('themeToggle');
+    const icon = themeToggle.querySelector('i');
+    
+    const currentTheme = html.getAttribute('data-theme');
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    
+    // Smooth transition
+    document.body.style.transition = 'all 0.3s ease';
+    
+    html.setAttribute('data-theme', newTheme);
+    
+    // Icon değiştir
+    if (newTheme === 'light') {
+        icon.className = 'fas fa-moon';
+    } else {
+        icon.className = 'fas fa-sun';
+    }
+    
+    // LocalStorage'a kaydet
+    localStorage.setItem('theme', newTheme);
+    
+    // Transition'ı temizle
+    setTimeout(() => {
+        document.body.style.transition = '';
+    }, 300);
+}
+
+// Project Card Click Function
+function openProject(githubUrl) {
+    // Smooth animation before redirect
+    const clickedCard = event.currentTarget;
+    
+    // Click animasyonu
+    clickedCard.style.transform = 'scale(0.95)';
+    
+    setTimeout(() => {
+        // Yeni sekmede GitHub linkini aç
+        window.open(githubUrl, '_blank');
+        
+        // Animasyonu geri al
+        clickedCard.style.transform = '';
+    }, 150);
+}
+
+// Email Toast Function
 function showEmail() {
     const toast = document.getElementById('emailToast');
     toast.classList.add('show');
@@ -56,7 +103,7 @@ function showEmail() {
     }, 4000);
 }
 
-// Memory Gallery Functions - Ultra Smooth
+// Memory Gallery Functions
 function openMemory(imageSrc, caption) {
     const modal = document.getElementById('memoryModal');
     const modalImg = document.getElementById('memoryImage');
@@ -81,6 +128,23 @@ function closeMemory() {
 
 // Sayfa yüklendiğinde animasyonu başlat
 document.addEventListener('DOMContentLoaded', function() {
+    // Saved theme'i yükle
+    const savedTheme = localStorage.getItem('theme') || 'dark';
+    const html = document.documentElement;
+    const themeToggle = document.getElementById('themeToggle');
+    const icon = themeToggle.querySelector('i');
+    
+    html.setAttribute('data-theme', savedTheme);
+    
+    if (savedTheme === 'light') {
+        icon.className = 'fas fa-moon';
+    } else {
+        icon.className = 'fas fa-sun';
+    }
+    
+    // Theme toggle event listener
+    themeToggle.addEventListener('click', toggleTheme);
+    
     // Yazı makinesi efektini başlat
     typeEffect();
     
@@ -102,6 +166,11 @@ document.addEventListener('DOMContentLoaded', function() {
     // Hakkımda bölümündeki paragrafları gözlemle
     document.querySelectorAll('.about-content p').forEach(p => {
         observer.observe(p);
+    });
+    
+    // Projeler bölümündeki kartları gözlemle
+    document.querySelectorAll('.project-card').forEach(card => {
+        observer.observe(card);
     });
     
     // Anılarım bölümündeki öğeleri gözlemle
@@ -222,10 +291,10 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
 // Keyboard shortcuts
 document.addEventListener('keydown', function(e) {
-    // Ctrl + D ile dark mode toggle (gelecekte eklenecek)
+    // Ctrl + D ile dark/light mode toggle
     if (e.ctrlKey && e.key === 'd') {
         e.preventDefault();
-        console.log('Dark mode toggle - henüz aktif değil!');
+        toggleTheme();
     }
     
     // ESC tuşu ile modal kapansın
@@ -233,16 +302,34 @@ document.addEventListener('keydown', function(e) {
         const modal = document.getElementById('memoryModal');
         if (modal && modal.classList.contains('show')) {
             closeMemory();
-        } else {
-            // ESC ile tüm animasyonları durdur/başlat
-            const allAnimatedElements = document.querySelectorAll('*');
-            allAnimatedElements.forEach(el => {
-                if (el.style.animationPlayState === 'paused') {
-                    el.style.animationPlayState = 'running';
-                } else {
-                    el.style.animationPlayState = 'paused';
-                }
-            });
         }
     }
+});
+
+// Smooth scrolling for better UX
+document.documentElement.style.scrollBehavior = 'smooth';
+
+// Project cards hover effect enhancement
+document.addEventListener('DOMContentLoaded', function() {
+    const projectCards = document.querySelectorAll('.project-card');
+    
+    projectCards.forEach(card => {
+        card.addEventListener('mouseenter', function() {
+            // Diğer kartları hafif soluklaştır
+            projectCards.forEach(otherCard => {
+                if (otherCard !== this) {
+                    otherCard.style.opacity = '0.7';
+                    otherCard.style.transform = 'scale(0.95)';
+                }
+            });
+        });
+        
+        card.addEventListener('mouseleave', function() {
+            // Tüm kartları normale döndür
+            projectCards.forEach(otherCard => {
+                otherCard.style.opacity = '1';
+                otherCard.style.transform = '';
+            });
+        });
+    });
 });
