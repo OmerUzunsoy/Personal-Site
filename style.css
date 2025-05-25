@@ -216,6 +216,281 @@ h1 {
     box-shadow: 0 10px 20px rgba(120, 119, 198, 0.5);
 }
 
+/* Email Toast - Modern */
+.email-toast {
+    position: fixed;
+    top: 30px;
+    right: 30px;
+    background: linear-gradient(135deg, #7877c6 0%, #ff77c6 100%);
+    color: white;
+    padding: 0;
+    border-radius: 50px;
+    box-shadow: 0 10px 40px rgba(120, 119, 198, 0.4);
+    transform: translateX(400px);
+    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    z-index: 1000;
+    overflow: hidden;
+}
+
+.email-toast.show {
+    transform: translateX(0);
+}
+
+.toast-content {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 18px 25px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+.toast-content i {
+    font-size: 18px;
+    animation: bounce 2s infinite;
+}
+
+.toast-content span {
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-5px); }
+    60% { transform: translateY(-3px); }
+}
+
+/* Anılarım Bölümü - Senin Tasarım Stilinde */
+.memories {
+    padding: 100px 50px;
+    background: linear-gradient(135deg, #0c0c0c 0%, #1a1a1a 50%, #2a2a2a 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.memories::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 20% 30%, rgba(120, 119, 198, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(255, 119, 198, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 40% 60%, rgba(119, 198, 255, 0.1) 0%, transparent 50%);
+    animation: float 8s ease-in-out infinite;
+    pointer-events: none;
+}
+
+.memories-header {
+    text-align: center;
+    margin-bottom: 60px;
+    position: relative;
+    z-index: 1;
+}
+
+.memories-header h2 {
+    font-size: 2.5em;
+    margin-bottom: 15px;
+    color: #7877c6;
+    position: relative;
+}
+
+.memories-header h2::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 3px;
+    background: linear-gradient(45deg, #7877c6, #ff77c6);
+}
+
+.memories-header p {
+    font-size: 1.3rem;
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+
+.memories-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+.memory-item {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+    background: rgba(120, 119, 198, 0.1);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(120, 119, 198, 0.2);
+}
+
+.memory-item:hover {
+    transform: translateY(-15px) scale(1.03);
+    box-shadow: 0 25px 80px rgba(120, 119, 198, 0.4);
+    border-color: #7877c6;
+}
+
+.memory-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, transparent, rgba(120, 119, 198, 0.1), transparent);
+    transform: translateX(-100%);
+    transition: transform 0.6s;
+    z-index: 1;
+}
+
+.memory-item:hover::before {
+    transform: translateX(100%);
+}
+
+.memory-item img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+    filter: brightness(0.9);
+}
+
+.memory-item:hover img {
+    transform: scale(1.1);
+    filter: brightness(1.1);
+}
+
+.memory-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(transparent, rgba(0,0,0,0.8));
+    color: white;
+    padding: 25px;
+    transform: translateY(100%);
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    z-index: 2;
+}
+
+.memory-item:hover .memory-overlay {
+    transform: translateY(0);
+}
+
+.memory-overlay span {
+    font-size: 1.3rem;
+    font-weight: 600;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    display: block;
+    letter-spacing: 0.5px;
+}
+
+/* Memory Modal - Senin Stilinde */
+.memory-modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.95);
+    backdrop-filter: blur(20px);
+    animation: fadeIn 0.4s ease;
+}
+
+.memory-modal.show {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-container {
+    position: relative;
+    max-width: 90%;
+    max-height: 90%;
+}
+
+.modal-content {
+    width: 100%;
+    max-width: 800px;
+    max-height: 80vh;
+    object-fit: contain;
+    border-radius: 15px;
+    box-shadow: 0 20px 100px rgba(120, 119, 198, 0.3);
+    border: 2px solid rgba(120, 119, 198, 0.3);
+    animation: slideIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.close-modal {
+    position: fixed;
+    top: 40px;
+    right: 50px;
+    color: white;
+    font-size: 45px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 2001;
+    background: rgba(120, 119, 198, 0.2);
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(120, 119, 198, 0.3);
+}
+
+.close-modal:hover {
+    color: #7877c6;
+    background: rgba(120, 119, 198, 0.3);
+    transform: rotate(90deg) scale(1.1);
+    border-color: #7877c6;
+}
+
+.modal-caption {
+    text-align: center;
+    color: white;
+    padding: 25px;
+    font-size: 1.8rem;
+    font-weight: 600;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+    letter-spacing: 1px;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideIn {
+    from { 
+        transform: scale(0.7) translateY(50px); 
+        opacity: 0; 
+    }
+    to { 
+        transform: scale(1) translateY(0); 
+        opacity: 1; 
+    }
+}
+
 /* Mobil Uyumluluk */
 @media (max-width: 768px) {
     .hero h1 { font-size: 2.5em; }
@@ -224,4 +499,57 @@ h1 {
     .social-links { gap: 20px; }
     .social-links a { width: 50px; height: 50px; }
     .profile-photo { width: 150px; height: 150px; }
+    
+    /* Anılarım Mobile */
+    .memories {
+        padding: 60px 20px;
+    }
+    
+    .memories-header h2 {
+        font-size: 2rem;
+    }
+    
+    .memories-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .memory-item {
+        border-radius: 15px;
+    }
+    
+    .memory-item img {
+        height: 200px;
+    }
+    
+    .modal-content {
+        max-width: 95%;
+        border-radius: 10px;
+    }
+    
+    .close-modal {
+        top: 20px;
+        right: 20px;
+        font-size: 35px;
+        width: 50px;
+        height: 50px;
+    }
+    
+    .modal-caption {
+        font-size: 1.4rem;
+        padding: 20px 15px;
+    }
+    
+    .email-toast {
+        top: 20px;
+        right: 20px;
+    }
+    
+    .toast-content {
+        padding: 15px 20px;
+    }
+    
+    .toast-content span {
+        font-size: 14px;
+    }
 }
