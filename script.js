@@ -45,6 +45,40 @@ function typeEffect() {
     setTimeout(typeEffect, typingSpeed);
 }
 
+// Email Toast Function - Senin Stilinde
+function showEmail() {
+    const toast = document.getElementById('emailToast');
+    toast.classList.add('show');
+    
+    // 4 saniye sonra kaybolur
+    setTimeout(() => {
+        toast.classList.remove('show');
+    }, 4000);
+}
+
+// Memory Gallery Functions - Ultra Smooth
+function openMemory(imageSrc, caption) {
+    const modal = document.getElementById('memoryModal');
+    const modalImg = document.getElementById('memoryImage');
+    const modalCaption = document.getElementById('memoryCaption');
+    
+    // Modal'ı göster
+    modal.classList.add('show');
+    modalImg.src = imageSrc;
+    modalCaption.textContent = caption;
+    
+    // Body scroll'unu engelle
+    document.body.style.overflow = 'hidden';
+}
+
+function closeMemory() {
+    const modal = document.getElementById('memoryModal');
+    modal.classList.remove('show');
+    
+    // Body scroll'unu aktif et
+    document.body.style.overflow = 'auto';
+}
+
 // Sayfa yüklendiğinde animasyonu başlat
 document.addEventListener('DOMContentLoaded', function() {
     // Yazı makinesi efektini başlat
@@ -68,6 +102,11 @@ document.addEventListener('DOMContentLoaded', function() {
     // Hakkımda bölümündeki paragrafları gözlemle
     document.querySelectorAll('.about-content p').forEach(p => {
         observer.observe(p);
+    });
+    
+    // Anılarım bölümündeki öğeleri gözlemle
+    document.querySelectorAll('.memory-item').forEach(item => {
+        observer.observe(item);
     });
     
     // Sosyal medya linklerine hover efekti
@@ -143,6 +182,17 @@ document.addEventListener('DOMContentLoaded', function() {
             }, 2000);
         });
     }
+    
+    // Modal event listeners
+    const memoryModal = document.getElementById('memoryModal');
+    if (memoryModal) {
+        // Modal dışına tıklayınca kapansın
+        memoryModal.addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeMemory();
+            }
+        });
+    }
 });
 
 // Fadeın-out animasyonu için CSS ekle
@@ -178,15 +228,21 @@ document.addEventListener('keydown', function(e) {
         console.log('Dark mode toggle - henüz aktif değil!');
     }
     
-    // ESC ile tüm animasyonları durdur/başlat
+    // ESC tuşu ile modal kapansın
     if (e.key === 'Escape') {
-        const allAnimatedElements = document.querySelectorAll('*');
-        allAnimatedElements.forEach(el => {
-            if (el.style.animationPlayState === 'paused') {
-                el.style.animationPlayState = 'running';
-            } else {
-                el.style.animationPlayState = 'paused';
-            }
-        });
+        const modal = document.getElementById('memoryModal');
+        if (modal && modal.classList.contains('show')) {
+            closeMemory();
+        } else {
+            // ESC ile tüm animasyonları durdur/başlat
+            const allAnimatedElements = document.querySelectorAll('*');
+            allAnimatedElements.forEach(el => {
+                if (el.style.animationPlayState === 'paused') {
+                    el.style.animationPlayState = 'running';
+                } else {
+                    el.style.animationPlayState = 'paused';
+                }
+            });
+        }
     }
 });
