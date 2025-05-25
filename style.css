@@ -227,7 +227,7 @@ h1 {
     }
 }
 
-/* Projeler Bölümü */
+/* Projeler Bölümü - Tek Proje için Özel Tasarım */
 .projects {
     padding: 100px 50px;
     background: var(--bg-secondary);
@@ -264,27 +264,29 @@ h1 {
     letter-spacing: 1px;
 }
 
-.projects-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 30px;
+.projects-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     max-width: 1200px;
     margin: 0 auto;
 }
 
-.project-card {
+.project-card-featured {
     background: var(--bg-card);
-    border-radius: 20px;
-    padding: 30px;
+    border-radius: 25px;
+    padding: 40px;
     border: 2px solid var(--border-color);
     cursor: pointer;
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     position: relative;
     overflow: hidden;
     backdrop-filter: blur(10px);
+    max-width: 500px;
+    width: 100%;
 }
 
-.project-card::before {
+.project-card-featured::before {
     content: '';
     position: absolute;
     top: 0;
@@ -297,53 +299,77 @@ h1 {
     z-index: 0;
 }
 
-.project-card:hover::before {
+.project-card-featured:hover::before {
     opacity: 0.1;
 }
 
-.project-card:hover {
-    transform: translateY(-10px);
+.project-card-featured:hover {
+    transform: translateY(-15px) scale(1.02);
     border-color: var(--accent-primary);
-    box-shadow: 0 20px 40px var(--shadow-color);
+    box-shadow: 0 25px 50px var(--shadow-color);
 }
 
-.project-card > * {
+.project-card-featured > * {
     position: relative;
     z-index: 1;
 }
 
 .project-icon {
-    font-size: 2.5em;
+    font-size: 3.5em;
     color: var(--accent-primary);
-    margin-bottom: 20px;
+    margin-bottom: 25px;
     text-align: center;
     transition: transform 0.3s ease;
 }
 
-.project-card:hover .project-icon {
-    transform: scale(1.1) rotateY(180deg);
+.project-card-featured:hover .project-icon {
+    transform: scale(1.2) rotate(360deg);
 }
 
-.project-card h3 {
-    font-size: 1.5em;
-    margin-bottom: 15px;
+.project-card-featured h3 {
+    font-size: 2em;
+    margin-bottom: 20px;
     color: var(--text-primary);
     text-align: center;
-    font-weight: 600;
+    font-weight: 700;
 }
 
-.project-card p {
+.project-description {
     color: var(--text-secondary);
-    line-height: 1.6;
-    margin-bottom: 20px;
+    line-height: 1.7;
+    margin-bottom: 25px;
     text-align: center;
-    font-size: 1em;
+    font-size: 1.1em;
+}
+
+.project-details {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 25px;
+    gap: 20px;
+}
+
+.project-platform,
+.project-date {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-secondary);
+    background: rgba(120, 119, 198, 0.1);
+    padding: 8px 15px;
+    border-radius: 15px;
+    font-size: 0.9em;
+}
+
+.project-platform i,
+.project-date i {
+    color: var(--accent-primary);
 }
 
 .project-tech {
     display: flex;
-    gap: 10px;
-    margin-bottom: 20px;
+    gap: 12px;
+    margin-bottom: 25px;
     flex-wrap: wrap;
     justify-content: center;
 }
@@ -351,31 +377,31 @@ h1 {
 .tech-tag {
     background: var(--accent-primary);
     color: white;
-    padding: 5px 12px;
-    border-radius: 20px;
-    font-size: 0.8em;
+    padding: 8px 16px;
+    border-radius: 25px;
+    font-size: 0.9em;
     font-weight: 600;
     transition: transform 0.2s ease;
 }
 
-.project-card:hover .tech-tag {
-    transform: translateY(-2px);
+.project-card-featured:hover .tech-tag {
+    transform: translateY(-3px);
 }
 
 .project-link {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 8px;
+    gap: 10px;
     color: var(--accent-primary);
-    font-weight: 600;
+    font-weight: 700;
     opacity: 0;
-    transform: translateY(10px);
+    transform: translateY(15px);
     transition: all 0.3s ease;
-    font-size: 0.9em;
+    font-size: 1.1em;
 }
 
-.project-card:hover .project-link {
+.project-card-featured:hover .project-link {
     opacity: 1;
     transform: translateY(0);
 }
@@ -759,14 +785,27 @@ h1 {
         padding: 60px 20px;
     }
     
-    .projects-grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
+    .project-card-featured {
+        padding: 30px 25px;
+        border-radius: 20px;
     }
     
-    .project-card {
-        padding: 25px;
-        border-radius: 15px;
+    .project-icon {
+        font-size: 2.5em;
+    }
+    
+    .project-card-featured h3 {
+        font-size: 1.6em;
+    }
+    
+    .project-details {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .project-platform,
+    .project-date {
+        justify-content: center;
     }
     
     /* Anılarım Mobile */
