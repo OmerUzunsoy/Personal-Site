@@ -169,7 +169,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     // Projeler bölümündeki kartları gözlemle
-    document.querySelectorAll('.project-card-featured').forEach(card => {
+    document.querySelectorAll('.project-card').forEach(card => {
         observer.observe(card);
     });
     
@@ -308,3 +308,18 @@ document.addEventListener('keydown', function(e) {
 
 // Smooth scrolling for better UX
 document.documentElement.style.scrollBehavior = 'smooth';
+
+// Project cards hover effect enhancement
+document.addEventListener('DOMContentLoaded', function() {
+    const projectCards = document.querySelectorAll('.project-card');
+    
+    projectCards.forEach(card => {
+        card.addEventListener('mouseenter', function() {
+            // Tek kart olduğu için diğer kartları soluklaştırma kodu kaldırıldı
+        });
+        
+        card.addEventListener('mouseleave', function() {
+            // Reset işlemi kaldırıldı
+        });
+    });
+});
