@@ -64,11 +64,73 @@
             <a href="https://open.spotify.com/user/yceg59rz3mgjzasht17ypde1b?si=5a100e908694422b" target="_blank">
                 <i class="fab fa-spotify"></i>
             </a>
-                 <a href="mailto:uzunsoyomer@gmail.com">
-                <i>✉️</i>
+            <a href="#" onclick="showEmail()" class="email-link">
+                <i class="fab fa-mail"></i>
             </a>
         </div>
     </section>
+        <!-- Anılarım Bölümü -->
+    <section class="memories" id="memories">
+        <div class="memories-header">
+            <h2>Anılarım</h2>
+            <p>Hayatımdan özel anlar</p>
+        </div>
+        <div class="memories-grid">
+            <div class="memory-item" onclick="openMemory('memory1.jpg', 'Güzel Bir Gün')">
+                <img src="memory1.jpg" alt="Anı 1">
+                <div class="memory-overlay">
+                    <span>Güzel Bir Gün</span>
+                </div>
+            </div>
+            <div class="memory-item" onclick="openMemory('memory2.jpg', 'Arkadaşlarla')">
+                <img src="memory2.jpg" alt="Anı 2">
+                <div class="memory-overlay">
+                    <span>Arkadaşlarla</span>
+                </div>
+            </div>
+            <div class="memory-item" onclick="openMemory('memory3.jpg', 'Doğa Yürüyüşü')">
+                <img src="memory3.jpg" alt="Anı 3">
+                <div class="memory-overlay">
+                    <span>Doğa Yürüyüşü</span>
+                </div>
+            </div>
+            <div class="memory-item" onclick="openMemory('memory4.jpg', 'Spor Zamanı')">
+                <img src="memory4.jpg" alt="Anı 4">
+                <div class="memory-overlay">
+                    <span>Spor Zamanı</span>
+                </div>
+            </div>
+            <div class="memory-item" onclick="openMemory('memory5.jpg', 'Keyifli Anlar')">
+                <img src="memory5.jpg" alt="Anı 5">
+                <div class="memory-overlay">
+                    <span>Keyifli Anlar</span>
+                </div>
+            </div>
+            <div class="memory-item" onclick="openMemory('memory6.jpg', 'Unutulmaz')">
+                <img src="memory6.jpg" alt="Anı 6">
+                <div class="memory-overlay">
+                    <span>Unutulmaz</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Email Toast -->
+    <div id="emailToast" class="email-toast">
+        <div class="toast-content">
+            <i class="fas fa-envelope"></i>
+            <span>uzunsoyomer@gmail.com</span>
+        </div>
+    </div>
+
+    <!-- Memory Modal -->
+    <div id="memoryModal" class="memory-modal">
+        <span class="close-modal" onclick="closeMemory()">&times;</span>
+        <div class="modal-container">
+            <img class="modal-content" id="memoryImage">
+            <div class="modal-caption" id="memoryCaption"></div>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>
