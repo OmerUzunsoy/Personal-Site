@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="tr" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +8,13 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
 <body>
+    <!-- Theme Toggle Butonu -->
+    <div class="theme-toggle">
+        <button id="themeToggle" class="theme-btn">
+            <i class="fas fa-sun"></i>
+        </button>
+    </div>
+
     <!-- Ana Bölüm -->
     <section class="hero">
         <div class="profile-container">
@@ -40,6 +47,69 @@
         </div>
     </section>
 
+    <!-- Projeler Bölümü -->
+    <section class="projects" id="projects">
+        <div class="projects-header">
+            <h2>Projelerim</h2>
+            <p>Geliştirdiğim projeler ve GitHub repositories</p>
+        </div>
+        <div class="projects-grid">
+            <!-- UzunSClicker Projesi -->
+            <div class="project-card" onclick="openProject('https://github.com/OmerUzunsoy/UzunSClicker')">
+                <div class="project-icon">
+                    <i class="fab fa-windows"></i>
+                </div>
+                <h3>UzunSClicker</h3>
+                <p>Windows platformu için geliştirilmiş clicker oyunu. Kullanıcı dostu arayüz ve eğlenceli oyun mekaniği içerir.</p>
+                <div class="project-tech">
+                    <span class="tech-tag">Windows</span>
+                    <span class="tech-tag">Desktop</span>
+                    <span class="tech-tag">Game</span>
+                </div>
+                <div class="project-link">
+                    <i class="fas fa-external-link-alt"></i>
+                    <span>GitHub'da Görüntüle</span>
+                </div>
+            </div>
+
+            <!-- Portfolyo Website -->
+            <div class="project-card" onclick="openProject('https://github.com/OmerUzunsoy')">
+                <div class="project-icon">
+                    <i class="fas fa-globe"></i>
+                </div>
+                <h3>Portfolyo Website</h3>
+                <p>Modern CSS ve JavaScript ile geliştirilmiş kişisel portfolyo sitesi. Dark/Light mode ve responsive tasarım içerir.</p>
+                <div class="project-tech">
+                    <span class="tech-tag">HTML5</span>
+                    <span class="tech-tag">CSS3</span>
+                    <span class="tech-tag">JavaScript</span>
+                </div>
+                <div class="project-link">
+                    <i class="fas fa-external-link-alt"></i>
+                    <span>GitHub'da Görüntüle</span>
+                </div>
+            </div>
+
+            <!-- Python Learning Projects -->
+            <div class="project-card" onclick="openProject('https://github.com/OmerUzunsoy')">
+                <div class="project-icon">
+                    <i class="fab fa-python"></i>
+                </div>
+                <h3>Python Learning Projects</h3>
+                <p>Python öğrenirken geliştirdiğim mini projeler ve algoritma çözümleri. Temel programlama konseptlerini içerir.</p>
+                <div class="project-tech">
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">Algorithms</span>
+                    <span class="tech-tag">Learning</span>
+                </div>
+                <div class="project-link">
+                    <i class="fas fa-external-link-alt"></i>
+                    <span>GitHub'da Görüntüle</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- CV ve Sosyal Medya -->
     <section class="links">
         <div class="cv-section">
@@ -69,7 +139,8 @@
             </a>
         </div>
     </section>
-        <!-- Anılarım Bölümü -->
+
+    <!-- Anılarım Bölümü -->
     <section class="memories" id="memories">
         <div class="memories-header">
             <h2>Anılarım</h2>
