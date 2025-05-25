@@ -1,11 +1,11 @@
 // Instagram username yazı makinesi efekti
 const texts = [
-    "@omerruzunsoyy",
+    "@omer_uzunsoy55",
     "Bilgisayar Programcılığı Öğrencisi",
-    "JavaScript Developer",
     "Problem Çözücü",
     "Formula 1 Fanatiği",
-    "Müzik Sevdalısı"
+    "Müzik Sevdalısı",
+    "Ferrai Hayranı"
 ];
 
 let textIndex = 0;
