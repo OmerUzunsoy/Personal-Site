@@ -22,7 +22,8 @@ const translations = {
         "projects.viewOnGithub": "GitHub'da Görüntüle",
         "cv.download": "CV İndir",
         "memories.title": "Anılarım",
-        "memories.subtitle": "Hayatımdan özel anlar"
+        "memories.subtitle": "Hayatımdan özel anlar",
+        "loading": "Yükleniyor..."
     },
     en: {
         typing: [
@@ -46,7 +47,8 @@ const translations = {
         "projects.viewOnGithub": "View on GitHub",
         "cv.download": "Download CV",
         "memories.title": "My Memories",
-        "memories.subtitle": "Special moments from my life"
+        "memories.subtitle": "Special moments from my life",
+        "loading": "Loading..."
     }
 };
 
@@ -236,6 +238,19 @@ function closeMemory() {
 
 // Sayfa yüklendiğinde animasyonu başlat
 document.addEventListener('DOMContentLoaded', function() {
+    // Hide loading overlay after page load
+    const loadingOverlay = document.getElementById('loadingOverlay');
+    
+    // Simulate loading time and fade out loading overlay
+    setTimeout(() => {
+        if (loadingOverlay) {
+            loadingOverlay.classList.add('fade-out');
+            setTimeout(() => {
+                loadingOverlay.style.display = 'none';
+            }, 500);
+        }
+    }, 1500); // 1.5 second loading time
+    
     // Load saved language
     const savedLanguage = localStorage.getItem('language') || 'tr';
     const languageToggle = document.getElementById('languageToggle');
@@ -577,6 +592,24 @@ function requestParallaxUpdate() {
 
 // Scroll listener for parallax
 window.addEventListener('scroll', requestParallaxUpdate);
+
+// Scroll Progress Indicator
+function updateScrollProgress() {
+    const scrollTop = window.pageYOffset;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const scrollPercent = (scrollTop / docHeight) * 100;
+    
+    const progressBar = document.getElementById('scrollProgress');
+    if (progressBar) {
+        progressBar.style.width = Math.min(scrollPercent, 100) + '%';
+    }
+}
+
+// Combined scroll listener for better performance
+window.addEventListener('scroll', function() {
+    requestParallaxUpdate();
+    updateScrollProgress();
+}, { passive: true });
 
 // Micro-interactions: Add subtle animations on hover
 function addMicroInteractions() {
