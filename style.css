@@ -326,6 +326,33 @@ h1 {
     transform: scale(1.1) rotateY(180deg);
 }
 
+/* V2 Badge Styles */
+.project-icon-v2 {
+    position: relative;
+}
+
+.v2-badge {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background: var(--accent-gradient);
+    color: white;
+    font-size: 0.7em;
+    font-weight: bold;
+    padding: 4px 8px;
+    border-radius: 12px;
+    border: 2px solid var(--bg-card);
+    box-shadow: 0 2px 8px rgba(120, 119, 198, 0.4);
+    transition: all 0.3s ease;
+    letter-spacing: 0.5px;
+    z-index: 2;
+}
+
+.project-card:hover .v2-badge {
+    transform: scale(1.1);
+    box-shadow: 0 4px 12px rgba(120, 119, 198, 0.6);
+}
+
 .project-card h3 {
     font-size: 1.5em;
     margin-bottom: 15px;
@@ -798,6 +825,14 @@ h1 {
         flex-direction: column;
         gap: 10px;
         align-items: center;
+    }
+    
+    /* V2 Badge Mobile Adjustments */
+    .v2-badge {
+        font-size: 0.6em;
+        padding: 3px 6px;
+        top: -6px;
+        right: -6px;
     }
     
     /* Anılarım Mobile */
