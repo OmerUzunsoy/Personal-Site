@@ -6,12 +6,60 @@
     <title>Ömer Uzunsoy - Portfolyo</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- Scroll Progress Indicator -->
+    <div class="scroll-progress">
+        <div class="scroll-progress-bar" id="scrollProgress"></div>
+    </div>
+    
+    <!-- Loading Animation -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-spinner">
+            <div class="spinner-ring"></div>
+            <div class="spinner-ring"></div>
+            <div class="spinner-ring"></div>
+            <div class="loading-text" data-lang="loading">Yükleniyor...</div>
+        </div>
+    </div>
 </head>
 <body>
     <!-- Theme Toggle Butonu -->
     <div class="theme-toggle">
         <button id="themeToggle" class="theme-btn">
             <i class="fas fa-sun"></i>
+        </button>
+    </div>
+
+    <!-- Language Toggle Butonu -->
+    <div class="language-toggle">
+        <button id="languageToggle" class="language-btn">
+            <div class="flag-icon" id="currentFlag">
+                <!-- Turkish Flag SVG -->
+                <svg class="flag-tr" width="24" height="18" viewBox="0 0 24 18" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="24" height="18" fill="#e30a17"/>
+                    <circle cx="8" cy="9" r="3.5" fill="#ffffff"/>
+                    <circle cx="9.5" cy="9" r="2.8" fill="#e30a17"/>
+                    <path d="M 12.5 7 L 14.5 8.5 L 13 9.5 L 14.5 10.5 L 12.5 12 L 13.5 9.5 Z" fill="#ffffff"/>
+                </svg>
+                <!-- US Flag SVG -->
+                <svg class="flag-us" width="24" height="18" viewBox="0 0 24 18" style="display: none;" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="24" height="18" fill="#002868"/>
+                    <rect y="1.4" width="24" height="1.2" fill="#ffffff"/>
+                    <rect y="4" width="24" height="1.2" fill="#bf0a30"/>
+                    <rect y="6.6" width="24" height="1.2" fill="#ffffff"/>
+                    <rect y="9.2" width="24" height="1.2" fill="#bf0a30"/>
+                    <rect y="11.8" width="24" height="1.2" fill="#ffffff"/>
+                    <rect y="14.4" width="24" height="1.2" fill="#bf0a30"/>
+                    <rect y="17" width="24" height="1" fill="#ffffff"/>
+                    <rect width="10" height="10" fill="#002868"/>
+                    <circle cx="1.5" cy="1.5" r="0.3" fill="#ffffff"/>
+                    <circle cx="3" cy="1.5" r="0.3" fill="#ffffff"/>
+                    <circle cx="4.5" cy="1.5" r="0.3" fill="#ffffff"/>
+                    <circle cx="6" cy="1.5" r="0.3" fill="#ffffff"/>
+                    <circle cx="7.5" cy="1.5" r="0.3" fill="#ffffff"/>
+                </svg>
+            </div>
+            <span id="currentLang">TR</span>
         </button>
     </div>
 
@@ -29,17 +77,17 @@
 
     <!-- Hakkımda Bölümü -->
     <section class="about">
-        <h2>Hakkımda</h2>
+        <h2 data-lang="about.title">Hakkımda</h2>
         <div class="about-content">
-            <p>
+            <p data-lang="about.paragraph1">
                 Merhaba! Ben Ömer, Işık Üniversitesi Bilgisayar Programcılığı 1. sınıf öğrencisiyim. 
                 Kod yazmaya yakın zamanda başladım ve her gün yeni şeyler öğrenmeye devam ediyorum.
             </p>
-            <p>
+            <p data-lang="about.paragraph2">
                 Müzik dinlemeyi, oyun oynamayı ve Formula 1 yarışlarını takip etmeyi seviyorum. 
                 Ayrıca bisiklet sürmek ve voleybol oynamak en büyük hobilerimin başında geliyor.
             </p>
-            <p>
+            <p data-lang="about.paragraph3">
                 Hedefim insanların hayatını kolaylaştıracak, işlerine yarayacak uygulamalar geliştirmek. 
                 Dürüstlük ve saygı benim için çok önemli değerler. Aklıma bir şey takıldığında onu çözene kadar duramam - 
                 biraz inatçıyım bu konuda! 😄
@@ -50,8 +98,8 @@
     <!-- Projeler Bölümü -->
     <section class="projects" id="projects">
         <div class="projects-header">
-            <h2>Projelerim</h2>
-            <p>Geliştirdiğim projeler ve GitHub repositories</p>
+            <h2 data-lang="projects.title">Projelerim</h2>
+            <p data-lang="projects.subtitle">Geliştirdiğim projeler ve GitHub repositories</p>
         </div>
         <div class="projects-grid">
             <!-- UzunSClicker Projesi -->
@@ -60,7 +108,7 @@
                     <i class="fas fa-mouse-pointer"></i>
                 </div>
                 <h3>UzunSClicker</h3>
-                <p>Windows için geliştirilmiş otomatik tıklama uygulaması. Kullanıcı dostu arayüz ile kolay kurulum ve hızlı tıklama özellikleri sunar.</p>
+                <p data-lang="projects.uzunsclicker.description">Windows için geliştirilmiş otomatik tıklama uygulaması. Kullanıcı dostu arayüz ile kolay kurulum ve hızlı tıklama özellikleri sunar.</p>
                 <div class="project-details">
                     <div class="project-platform">
                         <i class="fab fa-windows"></i>
@@ -68,7 +116,7 @@
                     </div>
                     <div class="project-date">
                         <i class="fas fa-calendar-alt"></i>
-                        <span>25 Mayıs 2025</span>
+                        <span data-lang="projects.uzunsclicker.date">25 Mayıs 2025</span>
                     </div>
                 </div>
                 <div class="project-tech">
@@ -78,7 +126,7 @@
                 </div>
                 <div class="project-link">
                     <i class="fas fa-external-link-alt"></i>
-                    <span>GitHub'da Görüntüle</span>
+                    <span data-lang="projects.viewOnGithub">GitHub'da Görüntüle</span>
                 </div>
             </div>
 
@@ -87,8 +135,11 @@
                 <div class="project-icon">
                     <i class="fas fa-cursor"></i>
                 </div>
+                <div class="v2-badge">
+                    <span>V2</span>
+                </div>
                 <h3>UzunSclicker-V2</h3>
-                <p>Modern Mouse Auto Clicker - Windows Desktop Application. Gelişmiş özellikler, modern arayüz ve geliştirilmiş performans sunar.</p>
+                <p data-lang="projects.uzunsclicker_v2.description">Modern Mouse Auto Clicker - Windows Desktop Application. Gelişmiş özellikler, modern arayüz ve geliştirilmiş performans sunar.</p>
                 <div class="project-details">
                     <div class="project-platform">
                         <i class="fab fa-windows"></i>
@@ -96,7 +147,7 @@
                     </div>
                     <div class="project-date">
                         <i class="fas fa-calendar-alt"></i>
-                        <span>10 Ağustos 2025</span>
+                        <span data-lang="projects.uzunsclicker_v2.date">10 Ağustos 2025</span>
                     </div>
                 </div>
                 <div class="project-tech">
@@ -107,7 +158,7 @@
                 </div>
                 <div class="project-link">
                     <i class="fas fa-external-link-alt"></i>
-                    <span>GitHub'da Görüntüle</span>
+                    <span data-lang="projects.viewOnGithub">GitHub'da Görüntüle</span>
                 </div>
             </div>
         </div>
@@ -117,7 +168,8 @@
     <section class="links">
         <div class="cv-section">
             <a href="cv.pdf" download class="cv-button">
-                <i class="fas fa-download"></i> CV İndir
+                <i class="fas fa-download"></i> 
+                <span data-lang="cv.download">CV İndir</span>
             </a>
         </div>
         
@@ -146,8 +198,8 @@
     <!-- Anılarım Bölümü -->
     <section class="memories" id="memories">
         <div class="memories-header">
-            <h2>Anılarım</h2>
-            <p>Hayatımdan özel anlar</p>
+            <h2 data-lang="memories.title">Anılarım</h2>
+            <p data-lang="memories.subtitle">Hayatımdan özel anlar</p>
         </div>
         <div class="memories-grid">
             <div class="memory-item" onclick="openMemory('memory1.jpg', 'Las Familias Es Todo')">
