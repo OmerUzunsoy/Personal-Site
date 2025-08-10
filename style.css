@@ -411,6 +411,9 @@ h1 {
     max-width: 1000px;
     margin: 0 auto;
     text-align: center;
+    position: relative;
+    z-index: 10;
+    background: var(--bg-primary);
 }
 
 .about h2 {
