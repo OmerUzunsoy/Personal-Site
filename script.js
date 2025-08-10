@@ -568,16 +568,16 @@ function updateParallax() {
     if (scrollTop < heroHeight) {
         const scrollPercent = scrollTop / heroHeight;
         
-        // Parallax effect for hero background
-        hero.style.transform = `translateY(${scrollTop * 0.5}px)`;
+        // Reduced parallax effect for better readability
+        hero.style.transform = `translateY(${scrollTop * 0.2}px)`;
         
-        // Parallax effect for hero content
+        // Reduced parallax effect for hero content
         const profileContainer = document.querySelector('.profile-container');
-        profileContainer.style.transform = `translateY(${scrollTop * 0.3}px)`;
+        profileContainer.style.transform = `translateY(${scrollTop * 0.1}px)`;
         
-        // Fade effect as user scrolls
-        const opacity = 1 - (scrollPercent * 0.8);
-        profileContainer.style.opacity = Math.max(opacity, 0.2);
+        // Gentler fade effect as user scrolls
+        const opacity = 1 - (scrollPercent * 0.5);
+        profileContainer.style.opacity = Math.max(opacity, 0.4);
     }
     
     ticking = false;
